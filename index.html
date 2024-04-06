@@ -1,0 +1,74 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node.js Quiz</title>
+</head>
+<body>
+    <h1>Welcome to the Node.js Quiz!</h1>
+    <form id="quizForm">
+        <div id="questionsContainer"></div>
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="results"></div>
+
+    <script>
+        fetch('http://localhost:3000/quiz')
+        .then(response => response.json())
+        .then(questions => {
+            const questionsContainer = document.getElementById('questionsContainer');
+
+            questions.forEach((question, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.innerHTML = `
+                    <p>${index + 1}. ${question.question}</p>
+                    ${question.options.map(option => `
+                        <input type="radio" id="option${index}_${option}" name="question${index}" value="${option}">
+                        <label for="option${index}_${option}">${option}</label><br>
+                    `).join('')}
+                `;
+                questionsContainer.appendChild(questionDiv);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching quiz questions:', error);
+        });
+
+        
+        document.getElementById('quizForm').addEventListener('submit', event => {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+
+            fetch('http://localhost:3000/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify([...formData.values()]),
+            })
+            .then(response => response.json())
+            .then(data => {
+                const resultsContainer = document.getElementById('results');
+                resultsContainer.innerHTML = '<h2>Quiz Results</h2>';
+                
+                data.results.forEach(result => {
+                    const resultDiv = document.createElement('div');
+                    resultDiv.innerHTML = `
+                        <p>${result.question}: ${result.result === 'correct' ? 'Correct' : 'Incorrect'}. Correct answer: ${result.correctAnswer}</p>
+                    `;
+                    resultsContainer.appendChild(resultDiv);
+                });
+
+                resultsContainer.innerHTML += `<p>Your Score: ${data.score}</p>`;
+            })
+            .catch(error => {
+                console.error('Error submitting quiz:', error);
+            });
+        });
+    </script>
+</body>
+</html>

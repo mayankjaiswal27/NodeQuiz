@@ -1,0 +1,23 @@
+
+
+[
+    {
+        "question": "What is Node.js?",
+        "options": [
+            "A framework for building mobile applications",
+            "A runtime environment for executing JavaScript code outside the browser",
+            "A database management system"
+        ],
+        "correctAnswer": "A runtime environment for executing JavaScript code outside the browser"
+    },
+    {
+        "question": "What does npm stand for?",
+        "options": [
+            "Node Package Manager",
+            "New Project Manager",
+            "Node Project Manager"
+        ],
+        "correctAnswer": "Node Package Manager"
+    }
+    
+]

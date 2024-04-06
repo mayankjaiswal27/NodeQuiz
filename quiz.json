@@ -1,23 +1,47 @@
-
-
 [
     {
-        "question": "What is Node.js?",
+        "question": "What is the capital of France?",
         "options": [
-            "A framework for building mobile applications",
-            "A runtime environment for executing JavaScript code outside the browser",
-            "A database management system"
+            "Berlin",
+            "Paris",
+            "Rome"
         ],
-        "correctAnswer": "A runtime environment for executing JavaScript code outside the browser"
+        "correctAnswer": "Paris"
     },
     {
-        "question": "What does npm stand for?",
+        "question": "Who painted the Mona Lisa?",
         "options": [
-            "Node Package Manager",
-            "New Project Manager",
-            "Node Project Manager"
+            "Leonardo da Vinci",
+            "Pablo Picasso",
+            "Vincent van Gogh"
         ],
-        "correctAnswer": "Node Package Manager"
+        "correctAnswer": "Leonardo da Vinci"
+    },
+    {
+        "question": "Which planet is the largest in our solar system?",
+        "options": [
+            "Venus",
+            "Jupiter",
+            "Saturn"
+        ],
+        "correctAnswer": "Jupiter"
+    },
+    {
+        "question": "What is the chemical symbol for water?",
+        "options": [
+            "H₂O",
+            "CO₂",
+            "O₂"
+        ],
+        "correctAnswer": "H₂O"
+    },
+    {
+        "question": "Which country is known as the Land of the Rising Sun?",
+        "options": [
+            "China",
+            "Japan",
+            "South Korea"
+        ],
+        "correctAnswer": "Japan"
     }
-    
 ]
